@@ -9,18 +9,10 @@ const Card = (inputs) =>{
         setIsFlipped(!isFlipped);
     }
 
-    let onTrigger = () => {
-        // Call the parent callback function
-        inputs.parentCallback(!isFlipped);
-    }
-    if(inputs.flip){
-        flipCard;
-    }
-
     let cardStyle = isFlipped ? {transform: 'rotateX(180deg)'} : {transform: 'rotateX(0deg)'};
     return(
             <div className = {inputs.front + inputs.back}>
-            <div className="flip-card" onClick = {() => { flipCard(); onTrigger(); }}>
+            <div className="flip-card" onClick = {flipCard}>
                 <div className="flip-card-inner" style={cardStyle}>
                     <div className="flip-card-front">
                         <p className = "flip-card-input">{inputs.front}</p>

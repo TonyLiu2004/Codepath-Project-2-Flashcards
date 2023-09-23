@@ -4,29 +4,25 @@ import {useState} from 'react';
 
 const App = () => {
 
-  let flipped = false;
-  const handleCallback = (childData) => {
-    flipped = childData;
-    console.log(flipped);
-  }
-
-  const cards = [<Card front = "1" back = "1back" parentCallback={handleCallback}></Card>,<Card front = "2" back = "2back" parentCallback={handleCallback}></Card>];
-  const [display_cards, setCard] = useState(cards[0]);
+  const cards = [<Card front = "1" back = "1back"></Card>,
+                 <Card front = "2" back = "2back"></Card>
+                ];
+  const [displayCardIndex, setCardIndex] = useState(0);
+    
   const changeCard = () => {
     const r =Math.floor(Math.random() * cards.length);
-    setCard(cards[r]);
+    setCardIndex(r);
   }
 
-  
   
   return (
     <div className="main">
       <h1>Spanish Flashcards!</h1>
       <h3>How good are you at Spanish? Test your knowledge of Spanish vocabulary here!</h3>
-      <p>Number of cards: </p>
+      <p>Number of cards: {cards.length}</p>
 
       <div className = "cardContainer">
-        {display_cards}
+        {cards[displayCardIndex]}
       </div>
       <button onClick = {changeCard}>Next Card</button>
     </div>
