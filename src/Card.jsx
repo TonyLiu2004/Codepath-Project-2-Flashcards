@@ -11,7 +11,7 @@ const Card = (input) =>{
 
     let cardStyle = isFlipped ? {transform: 'rotateX(180deg)'} : {transform: 'rotateX(0deg)'};
     return(
-            <div className = {input.front + input.back + input.key}>
+            <div className = {input.front + input.back}>
             <div className="flip-card" onClick = {flipCard}>
                 <div className="flip-card-inner" style={cardStyle}>
                     <div className="flip-card-front">
