@@ -4,11 +4,11 @@ import {useState} from 'react';
 
 const App = () => {
 
-  const cards = [<Card front = "1" back = "1back"></Card>,
-                 <Card front = "2" back = "2back"></Card>
+  const cards = [<Card front = "1" back = "1back" key="1" ></Card>,
+                 <Card front = "2" back = "2back" key="2"></Card>,
+                 <Card front = "3" back = "3back" key="3"></Card>,
                 ];
   const [displayCardIndex, setCardIndex] = useState(0);
-    
   const changeCard = () => {
     const r =Math.floor(Math.random() * cards.length);
     setCardIndex(r);
