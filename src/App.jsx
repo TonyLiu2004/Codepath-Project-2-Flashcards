@@ -4,9 +4,18 @@ import {useState} from 'react';
 
 const App = () => {
 
-  const cards = [<Card front = "1" back = "1back" key="1" ></Card>,
-                 <Card front = "2" back = "2back" key="2"></Card>,
-                 <Card front = "3" back = "3back" key="3"></Card>,
+  const cards = [<Card front = "Buenos días" back = "Good Morning" key="1" ></Card>,
+                 <Card front = "Hola" back = "Hello" key="2"></Card>,
+                 <Card front = "Cómo estás" back = "3back How are you" key="3"></Card>,
+                 <Card front = "Qué tal" back = "How's it going" key="4" ></Card>,
+                 <Card front = "Hasta luego" back = "See you later" key="5"></Card>,
+                 <Card front = "Cómo te llamas" back = "What is your name" key="6"></Card>,
+                 <Card front = "De dónde eres" back = "Where are you from" key="7" ></Card>,
+                 <Card front = "Por favor" back = "Please" key="8"></Card>,
+                 <Card front = "Gracias" back = "Thanks" key="9"></Card>,
+                 <Card front = "Cuaderno" back = "Notebook" key="10" ></Card>,
+                 <Card front = "Lapiz" back = "Pencil" key="11"></Card>,
+                 <Card front = "Estudiante" back = "Student" key="12"></Card>,
                 ];
   const [displayCardIndex, setCardIndex] = useState(0);
   const changeCard = () => {
