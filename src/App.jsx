@@ -34,16 +34,15 @@ const App = () => {
 
 
     console.log(displayCards);
+    console.log(displayCardIndex);
   }
 
   const [displayCardIndex, setCardIndex] = useState(0);
   const nextCard = () => {
-    setCardIndex(displayCardIndex+1);
+    if(displayCardIndex < 11) setCardIndex(displayCardIndex+1);
   }
   const prevCard = () => {
-    if(displayCardIndex > 0){
-      setCardIndex(displayCardIndex-1);
-    }
+    if(displayCardIndex > 0) setCardIndex(displayCardIndex-1);
   }
 
   
@@ -67,9 +66,11 @@ const App = () => {
         <input type="submit" style={{ marginTop: '10px', marginLeft:'10px' }}/>
       </form> <br/>
 
-      <button className = "prev-card" onClick = {prevCard}>Prev Card</button>
-      <button className = "next-card" onClick = {nextCard}>Next Card</button>
-      <button className = "shuffle-cards" onClick = {shuffle}>Shuffle</button>
+      <div className = "card-button-container">
+        <button className = "card-button" onClick = {prevCard}>◀</button>
+        <button className = "card-button" onClick = {nextCard}>▶</button>
+        <button className = "card-button" onClick = {shuffle}>Shuffle</button>
+      </div>
     </div>
     
   )

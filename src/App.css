@@ -46,6 +46,12 @@
   justify-content: center;
 }
 
-.next-card{
+.card-button{
   background-color:rgb(82, 77, 77);
+}
+
+.card-button-container{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
