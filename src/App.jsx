@@ -23,21 +23,27 @@ const App = () => {
                  <Card front = "Estudiante" back = "Student" key="12" diff = "easy"></Card>,
                 ];
   
-  let displayCards =[0,1,2,3,4,5,6,7,8,9,10,11];
+  const [displayCards, setdisplayCards] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
   let shuffle = () =>{
-    let nums = [0,1,2,3,4,5,6,7,8,9,10,11];
-    for(let i = 0;i < cards.length;i++){
-      let r = Math.floor(Math.random() * nums.length);
-      displayCards[i] = nums[r];
-      nums[r] = nums[nums.length-1];
-      nums.pop();
+    for (let i = displayCards.length - 1; i > 0; i--) { 
+      let r = Math.floor(Math.random() * (i + 1));  
+      let temp = displayCards[i];
+      displayCards[i] = displayCards[r];
+      displayCards[r] = temp;
     }
+
+
+    console.log(displayCards);
   }
 
   const [displayCardIndex, setCardIndex] = useState(0);
-  const changeCard = () => {
-    const r =Math.floor(Math.random() * cards.length);
-    setCardIndex(r);
+  const nextCard = () => {
+    setCardIndex(displayCardIndex+1);
+  }
+  const prevCard = () => {
+    if(displayCardIndex > 0){
+      setCardIndex(displayCardIndex-1);
+    }
   }
 
   
@@ -48,7 +54,7 @@ const App = () => {
       <p>Number of cards: {cards.length}</p>
 
       <div className = "cardContainer">
-        {cards[displayCardIndex]}
+        {cards[displayCards[displayCardIndex]]}
       </div>
       <form onSubmit={handleSubmit}>
         <label>Guess the Answer:&nbsp;
@@ -61,7 +67,9 @@ const App = () => {
         <input type="submit" style={{ marginTop: '10px', marginLeft:'10px' }}/>
       </form> <br/>
 
-      <button className = "next-card" onClick = {changeCard}>Next Card</button>
+      <button className = "prev-card" onClick = {prevCard}>Prev Card</button>
+      <button className = "next-card" onClick = {nextCard}>Next Card</button>
+      <button className = "shuffle-cards" onClick = {shuffle}>Shuffle</button>
     </div>
     
   )

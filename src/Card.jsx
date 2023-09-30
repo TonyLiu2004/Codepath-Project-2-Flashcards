@@ -2,7 +2,7 @@ import './Card.css';
 import React from "react";
 import {useState} from 'react';
 
-const Card = (getAns, input) =>{
+const Card = (input) =>{
     const [isFlipped, setIsFlipped] = useState(false);
 
     const flipCard = () => {
@@ -18,7 +18,6 @@ const Card = (getAns, input) =>{
         bgColor = {backgroundColor: "red"};
     }
 
-    let ans = input.back;
     let cardStyle = isFlipped ? {transform: 'rotateX(180deg)'} : {transform: 'rotateX(0deg)'};
     return(
             <div className = {input.front + input.back}>
