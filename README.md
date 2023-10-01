@@ -29,8 +29,8 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
-<img src='https://imgur.com/a/JE4tFk4.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://i.imgur.com/jk1VOeo.mp4
+<img src='https://i.imgur.com/jk1VOeo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  Windows Xbox game bar and imgur
