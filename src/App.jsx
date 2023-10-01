@@ -10,23 +10,23 @@ const App = () => {
     alert(`The name you entered was: ${userInput} and the correct answer is ${answer}, correct: ${isCorrect}, flipped: ${flipped}`);
   }
   
-  let flipped = false;
+  const  [flipped, setFlipped] = useState(false);
   const handleCallback = (childData) => {
-    flipped = childData;
+    setFlipped(childData);
   }; 
 
   const cards = [<Card parentCallback={handleCallback} front = "Hola" back = "Hello" key="1" diff = "easy"></Card>,
-                 <Card front = "Buenos días" back = "Good Morning" key="2"  diff = "medium"></Card>,
-                 <Card front = "Cómo estás" back = "How are you" key="3" diff = "medium"></Card>,
-                 <Card front = "Qué tal" back = "How's it going" key="4" diff = "medium"></Card>,
-                 <Card front = "Hasta luego" back = "See you later" key="5" diff = "hard"></Card>,
-                 <Card front = "Cómo te llamas" back = "What is your name" key="6" diff = "hard"></Card>,
-                 <Card front = "De dónde eres" back = "Where are you from" key="7" diff = "hard"></Card>,
-                 <Card front = "Por favor" back = "Please" key="8" diff = "medium"></Card>,
-                 <Card front = "Gracias" back = "Thanks" key="9" diff = "easy"></Card>,
-                 <Card front = "Cuaderno" back = "Notebook" key="10" diff = "medium"></Card>,
-                 <Card front = "Lapiz" back = "Pencil" key="11" diff = "easy"></Card>,
-                 <Card front = "Estudiante" back = "Student" key="12" diff = "easy"></Card>,
+                 <Card parentCallback={handleCallback} front = "Buenos días" back = "Good Morning" key="2"  diff = "medium"></Card>,
+                 <Card parentCallback={handleCallback} front = "Cómo estás" back = "How are you" key="3" diff = "medium"></Card>,
+                 <Card parentCallback={handleCallback} front = "Qué tal" back = "How's it going" key="4" diff = "medium"></Card>,
+                 <Card parentCallback={handleCallback} front = "Hasta luego" back = "See you later" key="5" diff = "hard"></Card>,
+                 <Card parentCallback={handleCallback} front = "Cómo te llamas" back = "What is your name" key="6" diff = "hard"></Card>,
+                 <Card parentCallback={handleCallback} front = "De dónde eres" back = "Where are you from" key="7" diff = "hard"></Card>,
+                 <Card parentCallback={handleCallback} front = "Por favor" back = "Please" key="8" diff = "medium"></Card>,
+                 <Card parentCallback={handleCallback} front = "Gracias" back = "Thanks" key="9" diff = "easy"></Card>,
+                 <Card parentCallback={handleCallback} front = "Cuaderno" back = "Notebook" key="10" diff = "medium"></Card>,
+                 <Card parentCallback={handleCallback} front = "Lapiz" back = "Pencil" key="11" diff = "easy"></Card>,
+                 <Card parentCallback={handleCallback} front = "Estudiante" back = "Student" key="12" diff = "easy"></Card>,
                 ];
   const [displayCards, setdisplayCards] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
   let shuffle = () =>{
@@ -46,12 +46,14 @@ const App = () => {
     if(displayCardIndex < 11) {
       setCardIndex(displayCardIndex+1);
       setAnswer(cards[displayCards[displayCardIndex+1]].props.back);
+      setFlipped(false);
     }
   }
   const prevCard = () => {
     if(displayCardIndex > 0) {
       setCardIndex(displayCardIndex-1); 
       setAnswer(cards[displayCards[displayCardIndex-1]].props.back);
+      setFlipped(false);
     }
   }
 
