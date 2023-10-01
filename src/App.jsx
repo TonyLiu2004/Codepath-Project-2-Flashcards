@@ -6,14 +6,20 @@ const App = () => {
   const [userInput, setUserInput] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    var isCorrect = userInput.toLowerCase() == answer.toLowerCase();
-    alert(`The name you entered was: ${userInput} and the correct answer is ${answer}, correct: ${isCorrect}, flipped: ${flipped}`);
+    if(!flipped){
+      var isCorrect = userInput.toLowerCase() == answer.toLowerCase();
+      if(isCorrect) setAnswerStyle({backgroundColor: 'green'});
+      else setAnswerStyle({backgroundColor: 'red'});
+      //alert(`The name you entered was: ${userInput} and the correct answer is ${answer}, correct: ${isCorrect}, flipped: ${flipped}`);
+    }
   }
   
   const  [flipped, setFlipped] = useState(false);
   const handleCallback = (childData) => {
     setFlipped(childData);
   }; 
+
+  const [answerStyle, setAnswerStyle] = useState();
 
   const cards = [<Card parentCallback={handleCallback} front = "Hola" back = "Hello" key="1" diff = "easy"></Card>,
                  <Card parentCallback={handleCallback} front = "Buenos días" back = "Good Morning" key="2"  diff = "medium"></Card>,
@@ -70,6 +76,7 @@ const App = () => {
       <form onSubmit={handleSubmit}>
         <label>Guess the Answer:&nbsp;
           <input
+            style = {answerStyle}
             type="text" 
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
