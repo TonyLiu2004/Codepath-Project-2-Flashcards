@@ -6,7 +6,7 @@ const App = () => {
   const [userInput, setUserInput] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${userInput}`);
+    alert(`The name you entered was: ${userInput} and the correct answer is ${answer}`);
   }
 
   const cards = [<Card front = "Hola" back = "Hello" key="1" diff = "easy"></Card>,
@@ -22,7 +22,6 @@ const App = () => {
                  <Card front = "Lapiz" back = "Pencil" key="11" diff = "easy"></Card>,
                  <Card front = "Estudiante" back = "Student" key="12" diff = "easy"></Card>,
                 ];
-  
   const [displayCards, setdisplayCards] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
   let shuffle = () =>{
     for (let i = displayCards.length - 1; i > 0; i--) { 
@@ -31,21 +30,26 @@ const App = () => {
       displayCards[i] = displayCards[r];
       displayCards[r] = temp;
     }
-
-
     console.log(displayCards);
     console.log(displayCardIndex);
   }
+  let [answer, setAnswer] = useState(cards[displayCards[0]].props.back);
 
   const [displayCardIndex, setCardIndex] = useState(0);
   const nextCard = () => {
-    if(displayCardIndex < 11) setCardIndex(displayCardIndex+1);
+    if(displayCardIndex < 11) {
+      setCardIndex(displayCardIndex+1);
+      setAnswer(cards[displayCards[displayCardIndex+1]].props.back);
+    }
   }
   const prevCard = () => {
-    if(displayCardIndex > 0) setCardIndex(displayCardIndex-1);
+    if(displayCardIndex > 0) {
+      setCardIndex(displayCardIndex-1); 
+      setAnswer(cards[displayCards[displayCardIndex-1]].props.back);
+    }
   }
 
-  
+  console.log(answer);
   return (
     <div className="main">
       <h1>Spanish Flashcards!</h1>
