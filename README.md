@@ -4,7 +4,7 @@ Submitted by: **Tony Liu**
 
 This web app: **A react website with spanish flashcards that takes answers**
 
-Time spent: **5** hours spent in total
+Time spent: **11** hours spent in total
 
 ## Required Features
 
