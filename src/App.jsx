@@ -6,9 +6,10 @@ const App = () => {
   const [userInput, setUserInput] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${userInput} and the correct answer is ${answer}`);
+    var isCorrect = userInput.toLowerCase() == answer.toLowerCase();
+    alert(`The name you entered was: ${userInput} and the correct answer is ${answer}, correct: ${isCorrect}`);
   }
-
+  
   const cards = [<Card front = "Hola" back = "Hello" key="1" diff = "easy"></Card>,
                  <Card front = "Buenos días" back = "Good Morning" key="2"  diff = "medium"></Card>,
                  <Card front = "Cómo estás" back = "How are you" key="3" diff = "medium"></Card>,
