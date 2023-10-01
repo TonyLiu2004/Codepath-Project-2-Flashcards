@@ -5,6 +5,10 @@ import {useState} from 'react';
 const Card = (input) =>{
     const [isFlipped, setIsFlipped] = useState(false);
 
+    const getFlipped = () => {
+        input.parentCallback(!isFlipped);
+    }
+
     const flipCard = () => {
         setIsFlipped(!isFlipped);
     }
@@ -21,7 +25,7 @@ const Card = (input) =>{
     let cardStyle = isFlipped ? {transform: 'rotateX(180deg)'} : {transform: 'rotateX(0deg)'};
     return(
             <div className = {input.front + input.back}>
-            <div className="flip-card" onClick = {flipCard}>
+            <div className="flip-card" onClick={() => { flipCard(); getFlipped(); }}>
                 <div className="flip-card-inner" style={cardStyle}>
                     <div className="flip-card-front" style = {bgColor}>
                         <p className = "flip-card-input">{input.front}</p>

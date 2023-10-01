@@ -7,10 +7,15 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     var isCorrect = userInput.toLowerCase() == answer.toLowerCase();
-    alert(`The name you entered was: ${userInput} and the correct answer is ${answer}, correct: ${isCorrect}`);
+    alert(`The name you entered was: ${userInput} and the correct answer is ${answer}, correct: ${isCorrect}, flipped: ${flipped}`);
   }
   
-  const cards = [<Card front = "Hola" back = "Hello" key="1" diff = "easy"></Card>,
+  let flipped = false;
+  const handleCallback = (childData) => {
+    flipped = childData;
+  }; 
+
+  const cards = [<Card parentCallback={handleCallback} front = "Hola" back = "Hello" key="1" diff = "easy"></Card>,
                  <Card front = "Buenos días" back = "Good Morning" key="2"  diff = "medium"></Card>,
                  <Card front = "Cómo estás" back = "How are you" key="3" diff = "medium"></Card>,
                  <Card front = "Qué tal" back = "How's it going" key="4" diff = "medium"></Card>,
